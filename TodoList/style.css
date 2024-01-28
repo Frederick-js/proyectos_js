@@ -23,8 +23,9 @@ body {
 .container {
     max-width: 80%;
     width: 400px;
-    height: 0px;
+    height: 600px;
     margin: 0 auto;
+    
 }
 
 /*PERFIL*/
