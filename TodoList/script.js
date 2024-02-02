@@ -29,6 +29,14 @@ function tareaRealizada(element) {
   element.parentNode.querySelector('.text').classList.toggle(lineThrough);
 }
 
+//  Funcion tarea Eliminada
+function tareaEliminar(element) {
+  element.parentNode.parentNode.removeChild(element.parentNode);
+}
+
+
+
+
 
 
 botonEnter.addEventListener("click", () => {
