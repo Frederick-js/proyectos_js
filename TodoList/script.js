@@ -5,18 +5,22 @@ const botonEnter = document.querySelector("#enter");
 const check = "fa-check-circle";
 const uncheck = "fa-circle";
 const lineThrough = "line-through";
-let id
-let LIST
-
+let id;
+let LIST;
 
 // Creacion de funcion fecha
 const FECHA = new Date();
-fecha.innerHTML= FECHA.toLocaleDateString('es-MX', {weekday:'long', month: 'short', day: 'numeric'});
-
+fecha.innerHTML = FECHA.toLocaleDateString("es-MX", {
+  weekday: "long",
+  month: "short",
+  day: "numeric",
+});
 
 // Funcion agregar tarea
 function agregarTarea(tarea, id, realizado, eliminado) {
-  if (eliminado) {return};
+  if (eliminado) {
+    return;
+  }
 
   const REALIZADO = realizado ? check : uncheck;
   const LINE = realizado ? lineThrough : "";
@@ -34,7 +38,6 @@ function tareaRealizada(element) {
   element.classList.toggle(uncheck);
   element.parentNode.querySelector(".text").classList.toggle(lineThrough);
   LIST[element.id].realizado = LIST[element.id].realizado ? false : true;
-
 }
 
 //  Funcion tarea Eliminada
@@ -49,13 +52,15 @@ botonEnter.addEventListener("click", () => {
     agregarTarea(tarea, id, false, false);
     LIST.push({
       nombre: tarea,
-      id:id,
-      realizado:false,
-      eliminado:false
-    })
-  localStorage.setItem('TODO', JSON.stringify(LIST));
-  id++;
-  input.value = "";
+      id: id,
+      realizado: false,
+      eliminado: false,
+    });
+    localStorage.setItem("TODO", JSON.stringify(LIST));
+    id++;
+    input.value = "";
+  }else{
+    alert('Olvidaste agregar la tarea');
   }
 });
 
@@ -64,8 +69,10 @@ document.addEventListener("keyup", function (event) {
     const tarea = input.value;
     if (tarea) {
       agregarTarea(tarea, id, false, false);
+    }else{
+      alert('Olvidaste agregar la tarea');
     }
-    localStorage.setItem('TODO', JSON.stringify(LIST));
+    localStorage.setItem("TODO", JSON.stringify(LIST));
     input.value = "";
     id++;
   }
@@ -79,23 +86,22 @@ lista.addEventListener("click", function (event) {
   } else if (elementData === "eliminado") {
     tareaEliminar(element);
   }
-  localStorage.setItem('TODO', JSON.stringify(LIST));
+  localStorage.setItem("TODO", JSON.stringify(LIST));
 });
 
-
 // local storage set item
-let data = localStorage.getItem('TODO');
-if(data){
-  LIST=JSON.parse(data);
+let data = localStorage.getItem("TODO");
+if (data) {
+  LIST = JSON.parse(data);
   id = LIST.length;
   cargarLista(LIST);
-}else {
+} else {
   LIST = [];
   id = 0;
 }
 
-function cargarLista(DATA){
-  DATA.forEach(function(i) {
-    agregarTarea(i.nombre,i.id,i.realizado,i.eliminado)
+function cargarLista(DATA) {
+  DATA.forEach(function (i) {
+    agregarTarea(i.nombre, i.id, i.realizado, i.eliminado);
   });
 }
