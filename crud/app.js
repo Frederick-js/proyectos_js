@@ -4,8 +4,8 @@ const popupForm = document.querySelector('.popup');
 const crossBtn = document.querySelector('.closeBtn');
 
 newMemberAddBtn.addEventListener('click', ()=>{
-    console.log('hola');
+    darkBg.classList.add('active')
+    popupForm.classList.add('active')
 })
 
 
-console.log(newMemberAddBtn);
