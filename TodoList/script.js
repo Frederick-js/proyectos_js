@@ -48,7 +48,8 @@ function tareaEliminar(element) {
 
 botonEnter.addEventListener("click", () => {
   const tarea = input.value;
-  if (tarea) {
+  
+  if (!tarea == '') {
     agregarTarea(tarea, id, false, false);
     LIST.push({
       nombre: tarea,
@@ -60,8 +61,7 @@ botonEnter.addEventListener("click", () => {
     id++;
     input.value = "";
   }else{
-    const modalId = this.dataset.open;
-    document.getElementById(modalId).classList.add(isVisible);
+    console.log('holaa');
   }
 });
 
@@ -109,31 +109,3 @@ function cargarLista(DATA) {
 
 
 
-
-
-
-for (const el of openEls) {
-  el.addEventListener("click", function() {
-    const modalId = this.dataset.open;
-    document.getElementById(modalId).classList.add(isVisible);
-  });
-}
-
-for (const el of closeEls) {
-  el.addEventListener("click", function() {
-    this.parentElement.parentElement.parentElement.classList.remove(isVisible);
-  });
-}
-
-document.addEventListener("click", e => {
-  if (e.target == document.querySelector(".modal.is-visible")) {
-    document.querySelector(".modal.is-visible").classList.remove(isVisible);
-  }
-});
-
-document.addEventListener("keyup", e => {
-  // if we press the ESC
-  if (e.key == "Escape" && document.querySelector(".modal.is-visible")) {
-    document.querySelector(".modal.is-visible").classList.remove(isVisible);
-  }
-});
