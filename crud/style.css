@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300&family=Poppins:wght@100;200;300;400&display=swap');
 
+
 :root{
     --dark1: #0000004d;
     --dark2: #181c20;
@@ -27,6 +28,7 @@ body{
     min-height: 100vh;
     background: linear-gradient(var(--red1) 50%, var(--dark2) 50%);
 }
+
 
 .container{
     padding: 20px;
@@ -243,7 +245,7 @@ table tr .empty{
 
 
 
-Popup Form
+/* Popup Form */
 
 .dark_bg{
     position: fixed;
