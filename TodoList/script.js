@@ -5,6 +5,10 @@ const botonEnter = document.querySelector("#enter");
 const check = "fa-check-circle";
 const uncheck = "fa-circle";
 const lineThrough = "line-through";
+const darkBg = document.querySelector('.dark_bg');
+const popup = document.querySelector('.popup');
+
+
 let id;
 let LIST;
 
@@ -46,6 +50,8 @@ function tareaEliminar(element) {
   LIST[element.id].eliminado = true;
 }
 
+
+
 botonEnter.addEventListener("click", () => {
   const tarea = input.value;
   
@@ -58,21 +64,33 @@ botonEnter.addEventListener("click", () => {
       eliminado: false,
     });
     localStorage.setItem("TODO", JSON.stringify(LIST));
+    cerrarx();
     id++;
     input.value = "";
   }else{
-    console.log('holaa');
+    activarPopup();
+      
   }
+  
 });
+
+
+function cerrarx() {
+  popup.classList.remove('active');
+}
+
+function activarPopup() {
+  popup.classList.add('active');
+}
+
 
 document.addEventListener("keyup", function (event) {
   if (event.key == "Enter") {
     const tarea = input.value;
     if (tarea) {
       agregarTarea(tarea, id, false, false);
-    }else{
-      alert('Olvidaste agregar la tarea');
     }
+    cerrarx();
     localStorage.setItem("TODO", JSON.stringify(LIST));
     input.value = "";
     id++;
