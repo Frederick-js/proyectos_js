@@ -8,7 +8,7 @@ const lineThrough = "line-through";
 const darkBg = document.querySelector('.dark_bg');
 const popup = document.querySelector('.popup');
 
-
+s
 let id;
 let LIST;
 
